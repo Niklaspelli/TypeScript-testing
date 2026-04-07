@@ -1,0 +1,20 @@
+{
+  "name": "02-vite-basics",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "server": "json-server --watch data/db.json --port 3000"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vite": "^8.0.1"
+  },
+  "dependencies": {
+    "axios": "^1.14.0",
+    "json-server": "^1.0.0-beta.15"
+  }
+}
