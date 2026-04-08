@@ -1,4 +1,62 @@
-import axios from "axios";
+import type { Todo } from "./types/Todo";
+import * as api from "./api/todoApi";
+import { createTodoTemplate } from "./components/todoRender";
+
+// State
+let todos: Todo[] = [];
+
+// DOM-element
+const todosEl = document.querySelector<HTMLUListElement>("#todos")!;
+const formEl = document.querySelector<HTMLFormElement>("#new-todo-form")!;
+const inputEl = document.querySelector<HTMLInputElement>("#new-todo-title")!;
+
+const render = () => {
+  todosEl.innerHTML = todos.map(createTodoTemplate).join("");
+  addEventListeners();
+};
+
+const addEventListeners = () => {
+  document
+    .querySelectorAll<HTMLInputElement>(".toggle-todo")
+    .forEach((checkbox) => {
+      checkbox.addEventListener("change", async () => {
+        const id = Number(checkbox.dataset.id);
+        try {
+          await api.updateTodoStatus(id, checkbox.checked);
+          const todo = todos.find((t) => t.id === id);
+          if (todo) todo.completed = checkbox.checked;
+          render();
+        } catch (err) {
+          console.error("Fel vid uppdatering:", err);
+        }
+      });
+    });
+};
+
+formEl.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const title = inputEl.value.trim();
+  if (title.length < 3) return alert("För kort!");
+
+  try {
+    const newTodo = await api.createTodo(title);
+    todos.push(newTodo);
+    render();
+    inputEl.value = "";
+  } catch (err) {
+    console.error("Fel vid skapande:", err);
+  }
+});
+
+// Init
+const init = async () => {
+  todos = await api.getTodos();
+  render();
+};
+
+init();
+
+/* import axios from "axios";
 
 const todosEl = document.querySelector<HTMLUListElement>("#todos")!;
 const newTodoFormEl =
@@ -85,7 +143,7 @@ const addEventListeners = () => {
   });
 };
 
-fetchTodos();
+fetchTodos(); */
 
 /* interface UserData {
   name: string;
