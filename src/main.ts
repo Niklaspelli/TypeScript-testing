@@ -12,6 +12,13 @@ const inputEl = document.querySelector<HTMLInputElement>("#new-todo-title")!;
 const clearBtn = document.querySelector<HTMLButtonElement>("#clear-btn")!;
 
 const render = () => {
+  if (todos.length === 0) {
+    todosEl.innerHTML = `
+    <li class="empty-state">
+    <p>🎉 Listan är tom. Passa på att ta en kaffe!
+    </p></li>`;
+    return;
+  }
   todosEl.innerHTML = todos.map(createTodoTemplate).join("");
   addEventListeners();
 };
