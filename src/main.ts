@@ -20,7 +20,7 @@ const addEventListeners = () => {
     .querySelectorAll<HTMLInputElement>(".toggle-todo")
     .forEach((checkbox) => {
       checkbox.addEventListener("change", async () => {
-        const id = Number(checkbox.dataset.id);
+        const id = String(checkbox.dataset.id);
         try {
           await api.updateTodoStatus(id, checkbox.checked);
           const todo = todos.find((t) => t.id === id);

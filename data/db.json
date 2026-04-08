@@ -1,34 +1,19 @@
 {
   "todos": [
     {
-      "id": "1",
-      "title": "Learn basic TypeScript666",
-      "completed": false
-    },
-    {
-      "id": "2",
-      "title": "Learn async TypeScript",
-      "completed": true
-    },
-    {
-      "id": "3",
-      "title": "Have fun making promises",
-      "completed": false
-    },
-    {
-      "id": "4",
-      "title": "Explore advanced TypeScript features",
-      "completed": true
-    },
-    {
-      "title": "skapa en todo",
+      "title": "tvätta",
       "completed": true,
-      "id": "vYlp5cVWeMU"
+      "id": "EMLiqraA9dU"
     },
     {
-      "title": "dasdasdd",
+      "title": "träffa krille",
       "completed": true,
-      "id": "HtUc2jtAr2Q"
+      "id": "KLjJmzKGTWI"
+    },
+    {
+      "title": "studera typescript",
+      "completed": true,
+      "id": "TQtrKcFRTGQ"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
