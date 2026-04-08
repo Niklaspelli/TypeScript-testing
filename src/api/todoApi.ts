@@ -13,3 +13,8 @@ export const createTodo = (title: string) =>
 //PATCH/UPDATE
 export const updateTodoStatus = (id: string | number, completed: boolean) =>
   axios.patch(`${API_URL}/${id}`, { completed });
+
+export const deleteTodo = async (id: string) => {
+  const response = await axios.delete(`${API_URL}/${id}`);
+  return response.data;
+};

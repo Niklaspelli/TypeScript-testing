@@ -1,19 +1,9 @@
 {
   "todos": [
     {
-      "title": "tvätta",
+      "title": "skapa en todo",
       "completed": true,
-      "id": "EMLiqraA9dU"
-    },
-    {
-      "title": "träffa krille",
-      "completed": true,
-      "id": "KLjJmzKGTWI"
-    },
-    {
-      "title": "studera typescript",
-      "completed": true,
-      "id": "TQtrKcFRTGQ"
+      "id": "qVlR6JC8u24"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

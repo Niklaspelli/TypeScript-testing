@@ -8,6 +8,7 @@ export const createTodoTemplate = (todo: Todo) => {
         <span class="todo-title ${todo.completed ? "text-decoration-line-through" : ""}">
           ${todo.title}
         </span>
+        
       </span>
     </li>`;
 };

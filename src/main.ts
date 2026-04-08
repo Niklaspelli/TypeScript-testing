@@ -9,6 +9,7 @@ let todos: Todo[] = [];
 const todosEl = document.querySelector<HTMLUListElement>("#todos")!;
 const formEl = document.querySelector<HTMLFormElement>("#new-todo-form")!;
 const inputEl = document.querySelector<HTMLInputElement>("#new-todo-title")!;
+const clearBtn = document.querySelector<HTMLButtonElement>("#clear-btn")!;
 
 const render = () => {
   todosEl.innerHTML = todos.map(createTodoTemplate).join("");
@@ -45,6 +46,20 @@ formEl.addEventListener("submit", async (e) => {
     inputEl.value = "";
   } catch (err) {
     console.error("Fel vid skapande:", err);
+  }
+});
+
+clearBtn.addEventListener("click", async () => {
+  if (!confirm("Är du säker på att du vill radera listan?")) return;
+
+  try {
+    const deletePromises = todos.map((todo) => api.deleteTodo(todo.id));
+    await Promise.all(deletePromises);
+    todos = [];
+    render();
+    console.log("Alla todos är raderade");
+  } catch (error) {
+    console.error("Kunde inte radera todos:", error);
   }
 });
 
